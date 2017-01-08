@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Kantilever.Magazijnbeheer
 {
     [Microservice("Kantilever.Magazijnbeheer")]
-    interface IMagazijnService
+    public interface IMagazijnService
     {
         void ZetArtikelInMagazijn(ZetArtikelInMagazijnCommand command);
         void HaalArtikelUitMagazijn(HaalArtikelUitMagazijnCommand command);

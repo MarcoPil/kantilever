@@ -1,0 +1,26 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "InfoSupport.WSA.InfraStructure": "1.6.3",
+    "NETStandard.Library": "1.6.0"
+  },
+
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  "packOptions": {
+    "summary": "Interface types for Kantilever.Magazijnbeheer",
+    "tags": [ "Kantilever", "Magazijnbeheer" ],
+    "owners": [ "Info Support" ]
+  },
+
+  "scripts": {
+    "postcompile": [
+      "dotnet pack -o \"..\\..\\..\\NugetPackages\" --no-build --configuration %compile:Configuration%"
+    ]
+  }
+}

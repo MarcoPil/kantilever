@@ -7,6 +7,10 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Kantilever.Magazijnbeheer",
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Kantilever.Magazijnbeheer.Test", "Kantilever.Magazijnbeheer.Test\Kantilever.Magazijnbeheer.Test.xproj", "{63FFF8D8-EFEF-498F-ACA9-3A072E1E9794}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Kantilever.Magazijnbeheer.Common", "Kantilever.Magazijnbeheer.Common\Kantilever.Magazijnbeheer.Common.xproj", "{D1196938-6622-4585-9BD9-C36831CC4787}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Kantilever.Magazijnbeheer.HistoricalEvents", "Kantilever.Magazijnbeheer.HistoricalEvents\Kantilever.Magazijnbeheer.HistoricalEvents.xproj", "{8BF1B89A-AA47-4B3F-829C-6655CE8BDE0B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{63FFF8D8-EFEF-498F-ACA9-3A072E1E9794}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{63FFF8D8-EFEF-498F-ACA9-3A072E1E9794}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{63FFF8D8-EFEF-498F-ACA9-3A072E1E9794}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1196938-6622-4585-9BD9-C36831CC4787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1196938-6622-4585-9BD9-C36831CC4787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1196938-6622-4585-9BD9-C36831CC4787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1196938-6622-4585-9BD9-C36831CC4787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF1B89A-AA47-4B3F-829C-6655CE8BDE0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF1B89A-AA47-4B3F-829C-6655CE8BDE0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF1B89A-AA47-4B3F-829C-6655CE8BDE0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF1B89A-AA47-4B3F-829C-6655CE8BDE0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

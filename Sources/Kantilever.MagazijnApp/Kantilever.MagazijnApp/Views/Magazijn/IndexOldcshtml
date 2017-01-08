@@ -1,0 +1,52 @@
+@model IEnumerable<Kantilever.MagazijnApp.Models.MagazijnModels.ArtikelVoorraadAanpassing>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h2>Magazijn</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Artikelnummer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Artikelnaam)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voorraad)
+            </th>
+            <th></th>
+            <th>
+                @Html.DisplayNameFor(model => model.Aanpassing)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artikelnummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Artikelnaam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Voorraad)
+            </td>
+            <td>
+                @Html.ActionLink("[UIT magazijn]", "ArtikelenUitMagazijn", new { id = item.Artikelnummer })
+            </td>
+            <td>
+                @Html.EditorFor(modelItem => item.Aanpassing)
+            </td>
+            <td>
+                @Html.ActionLink("[IN magazijn]", "ArtikelenInMagazijn", new { id = item.Artikelnummer })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

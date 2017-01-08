@@ -1,0 +1,59 @@
+@model Kantilever.MagazijnApp.Models.MagazijnViewModels.ArtikelVoorraadAanpassing
+
+@{
+    ViewData["Title"] = "Voorraad aanpassen";
+}
+
+<h2>Voorraad aanpassen</h2>
+
+<form asp-action="VoorraadAanpassen">
+    <div class="form-horizontal">
+        <h4>Artikelen inboeken of afboeken</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(m => Model.Artikelnummer)
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(m => Model.Artikelnummer)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(m => Model.Artikelnaam)
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(m => Model.Artikelnaam)
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-2 text-right">
+                @Html.LabelFor(m => Model.Voorraad)
+            </div>
+            <div class="col-md-10">
+                @Html.DisplayFor(m => Model.Voorraad)
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Aanpassing" class="col-md-2 control-label"></label>
+            <div class="col-md-2">
+                <input asp-for="Aanpassing" class="form-control" />
+                <span asp-validation-for="Aanpassing" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Aanpassen" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Ander artikel</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

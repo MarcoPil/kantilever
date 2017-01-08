@@ -12,6 +12,9 @@ using Microsoft.Extensions.Logging;
 using Kantilever.MagazijnApp.Data;
 using Kantilever.MagazijnApp.Models;
 using Kantilever.MagazijnApp.Services;
+using InfoSupport.WSA.Infrastructure;
+using Kantilever.Magazijnbeheer;
+using Kantilever.MagazijnApp.Infrastructure;
 
 namespace Kantilever.MagazijnApp
 {
@@ -52,6 +55,11 @@ namespace Kantilever.MagazijnApp
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
+
+            // Add custom Services
+            services.AddTransient<BusOptions>(sp => BusOptions.CreateFromEnvironment());
+            services.AddTransient<IMagazijnService, MagazijnService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

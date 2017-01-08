@@ -1,0 +1,1 @@
+﻿Scaffold-DbContext "Server=.\SQLEXPRESS;Database=Product;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer

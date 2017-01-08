@@ -7,7 +7,7 @@ namespace Kantilever.Magazijnbeheer.Entities
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public long ArtikelID { get; set; }
+        public int ArtikelID { get; set; }
         public int Voorraad { get; set; }
     }
 }

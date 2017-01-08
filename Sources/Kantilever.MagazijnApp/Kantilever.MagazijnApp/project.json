@@ -31,9 +31,9 @@
     "Microsoft.Extensions.Configuration.EnvironmentVariables": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
     "Microsoft.Extensions.Configuration.UserSecrets": "1.0.0",
-    "Microsoft.Extensions.Logging": "1.0.0",
-    "Microsoft.Extensions.Logging.Console": "1.0.0",
-    "Microsoft.Extensions.Logging.Debug": "1.0.0",
+    "Microsoft.Extensions.Logging": "1.1.0",
+    "Microsoft.Extensions.Logging.Console": "1.1.0",
+    "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
     "Microsoft.VisualStudio.Web.CodeGeneration.Tools": {
@@ -43,7 +43,12 @@
     "Microsoft.VisualStudio.Web.CodeGenerators.Mvc": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "Microsoft.EntityFrameworkCore": "1.1.0",
+    "InfoSupport.WSA.InfraStructure": "1.6.4",
+    "Kantilever.Catalogusbeheer.Common": "1.0.0",
+    "Kantilever.Magazijnbeheer.Common": "1.0.0",
+    "Kantilever.MagazijnApp.DAL": "1.0.0-*"
   },
 
   "tools": {
@@ -91,6 +96,9 @@
 
   "scripts": {
     "prepublish": [ "bower install", "dotnet bundle" ],
+    "postcompile": [
+      "dotnet publish --no-build -f netcoreapp1.0 -r debian.8-x64 -c release -o \"..\\..\\..\\Deliverables\\MagazijnApp\""
+    ],   
     "postpublish": [ "dotnet publish-iis --publish-folder %publish:OutputPath% --framework %publish:FullTargetFramework%" ]
   }
 }

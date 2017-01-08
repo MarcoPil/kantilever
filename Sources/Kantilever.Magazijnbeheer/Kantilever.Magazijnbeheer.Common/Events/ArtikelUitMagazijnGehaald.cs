@@ -8,7 +8,7 @@ namespace Kantilever.Magazijnbeheer.Events
         {
         }
 
-        public long ArtikelID { get; set; }
+        public int ArtikelID { get; set; }
         public int Voorraad { get; set; }
     }
 }

@@ -1,8 +1,8 @@
 ﻿namespace Kantilever.Magazijnbeheer
 {
-    public class ZetArtikelInMagazijnCommand
+    public class HaalArtikelUitMagazijnCommand
     {
-        public long ArtikelID { get; set; }
+        public int ArtikelID { get; set; }
         public int Aantal { get; set; }
     }
 }

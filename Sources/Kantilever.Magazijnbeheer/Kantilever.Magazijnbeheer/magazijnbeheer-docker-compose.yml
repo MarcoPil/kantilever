@@ -1,0 +1,40 @@
+version: '2'
+
+services:      
+  kantilever.magazijnbeheer.mssql:
+    image: microsoft/mssql-server-linux
+    container_name: kantilever-magazijnbeheer-mssql
+    environment:
+      SA_PASSWORD: "Pass_w0rd"
+      ACCEPT_EULA: "Y"
+    networks:
+      - kantilever_magazijnbeheer_network
+    ports:
+      - 20110:1433
+    volumes:
+      - "C:/Docker/kantilever/magazijnbeheer/db:/var/opt/mssql/"
+
+  kantilever.magazijnbeheer:
+    image: kantilever.magazijnbeheer
+    container_name: kantilever-magazijnbeheer
+    build:
+      context: .
+      dockerfile: MagazijnbeheerDockerfile
+    environment:
+      MagazijnDB: "Server=kantilever-magazijnbeheer-mssql;Database=MagazijnDB;User Id=sa;Password=Pass_w0rd"
+      eventbus-exchangename: "KantileverBus"
+      eventbus-hostname: "kantilever-eventbus"
+      eventbus-username: "Kantilever"
+      eventbus-password: "Kant1lever" 
+      startup-delay-in-seconds : 60
+    networks:
+      - kantilever_magazijnbeheer_network
+      - kantilever_eventbus_network
+
+networks:
+  kantilever_eventbus_network: 
+    external:
+      name: deliverables_kantilever_eventbus_network
+  kantilever_magazijnbeheer_network:
+ 
+  

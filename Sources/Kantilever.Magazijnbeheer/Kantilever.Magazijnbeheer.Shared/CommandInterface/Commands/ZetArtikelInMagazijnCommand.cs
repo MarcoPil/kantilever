@@ -1,4 +1,4 @@
-﻿namespace Kantilever.Magazijnbeheer
+﻿namespace Kantilever.Magazijnbeheer.Commands
 {
     public class ZetArtikelInMagazijnCommand
     {

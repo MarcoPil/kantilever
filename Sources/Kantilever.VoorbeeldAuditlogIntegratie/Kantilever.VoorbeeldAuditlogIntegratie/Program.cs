@@ -1,19 +1,17 @@
-﻿using System;
+﻿using InfoSupport.WSA.Infrastructure;
+using InfoSupport.WSA.Logging.Model;
+using Kantilever.Voorbeeld.EventBusListener;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using InfoSupport.WSA.Infrastructure;
-using Kantilever.MagazijnApp.DAL;
-using InfoSupport.WSA.Logging.Model;
 
-namespace Kantilever.MagazijnApp.EventBusListener
+namespace Kantilever.VoorbeeldAuditlogIntegratie
 {
     public class Program
     {
         private static BusOptions busoptions;
-        private static DbContextOptions<MagazijnContext> dbOptions;
         private static EventWaitHandle toStop = new AutoResetEvent(false);
 
         public static void Main(string[] args)
@@ -21,7 +19,7 @@ namespace Kantilever.MagazijnApp.EventBusListener
             Configure();
             StartUp();
 
-            Thread.Sleep(20000);
+            KeepApplicationAlive();
         }
 
         private static void Configure()
@@ -30,13 +28,12 @@ namespace Kantilever.MagazijnApp.EventBusListener
             Console.WriteLine("Configure Busoptions:");
             Console.WriteLine(busoptions);
 
-            string connectionString = Environment.GetEnvironmentVariable("MagazijnAppDB");
-            Console.WriteLine("Configure Connection:");
-            Console.WriteLine(connectionString);
+            //Console.WriteLine("Configure Connection:");
+            //Console.WriteLine(connectionString);
 
-            dbOptions = new DbContextOptionsBuilder<MagazijnContext>()
-                    .UseSqlServer(connectionString)
-                    .Options;
+            //dbOptions = new DbContextOptionsBuilder<SomeContext>()
+            //        .UseSqlServer(connectionString)
+            //        .Options;
         }
 
         private static void StartUp()
@@ -52,18 +49,18 @@ namespace Kantilever.MagazijnApp.EventBusListener
                 }
             }
 
-            Console.WriteLine("Ensure Database is created...");
-            using (var context = new MagazijnContext(dbOptions))
-            {
-                context.Database.EnsureCreated();
-            }
+            //Console.WriteLine("Ensure Database is created...");
+            //using (var context = new SomeContext(dbOptions))
+            //{
+            //    context.Database.EnsureCreated();
+            //}
 
             var replayEndpoint = Environment.GetEnvironmentVariable("startup-replay-endpoint");
             if (replayEndpoint != null)
             {
                 var replayBusOptions = new BusOptions
                 {
-                    ExchangeName = "Kantilever.MagazijnApp.ReplayExchange",
+                    ExchangeName = "Kantilever.Voorbeeld.ReplayExchange",
                     HostName = "localhost",
                     Port = 20000,
                     UserName = "Kantilever",

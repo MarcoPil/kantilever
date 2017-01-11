@@ -1,13 +1,14 @@
 ﻿using InfoSupport.WSA.Infrastructure;
+using Kantilever.Catalogusbeheer.DatabaseApp;
+using Kantilever.Magazijnbeheer.SnapshotBuilder;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Kantilever.Magazijnbeheer.SnapshotBuilder
+namespace Kantilever.Tools.SnapshotBuilder
 {
-
     public class Program
     {
         private static BusOptions busoptions;
@@ -23,10 +24,17 @@ namespace Kantilever.Magazijnbeheer.SnapshotBuilder
             {
                 Random rnd = new Random(42);
 
+                foreach (var evt in CatalogusSnapshot.Events)
+                {
+                    publisher.Publish(evt);
+                    Console.WriteLine($"published {evt.GetType().Name} event ({evt.Artikelnummer}, {evt.Naam}, ...)");
+                    Thread.Sleep(rnd.Next(50, 100));
+                }
+
                 foreach (var evt in VoorraadSnapshot.Events)
                 {
                     publisher.Publish(evt);
-                    Console.WriteLine($"published {evt.GetType().Name} event ({evt.ArtikelID},{evt.Voorraad})");
+                    Console.WriteLine($"published {evt.GetType().Name} event ({evt.ArtikelID}, {evt.Voorraad})");
                     Thread.Sleep(rnd.Next(50, 100));
                 }
             }
@@ -53,4 +61,5 @@ namespace Kantilever.Magazijnbeheer.SnapshotBuilder
             }
         }
     }
+
 }

@@ -7,7 +7,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Kantilever.Magazijnbeheer.HistoricalEvents")]
+[assembly: AssemblyProduct("Kantilever.Tools.SnapshotBuilder")]
 [assembly: AssemblyTrademark("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible
@@ -16,4 +16,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8bf1b89a-aa47-4b3f-829c-6655ce8bde0b")]
+[assembly: Guid("56d6793d-6bd2-45fa-a8f7-02e0eb4201fb")]

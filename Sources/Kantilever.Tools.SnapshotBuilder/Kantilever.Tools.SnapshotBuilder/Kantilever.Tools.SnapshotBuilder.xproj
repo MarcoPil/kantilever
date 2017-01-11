@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DotNet\Microsoft.DotNet.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>d1196938-6622-4585-9bd9-c36831cc4787</ProjectGuid>
-    <RootNamespace>Kantilever.Magazijnbeheer.Common</RootNamespace>
+    <ProjectGuid>56d6793d-6bd2-45fa-a8f7-02e0eb4201fb</ProjectGuid>
+    <RootNamespace>Kantilever.Tools.SnapshotBuilder</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">.\obj</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">.\bin\</OutputPath>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>

@@ -1,0 +1,31 @@
+﻿{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "Microsoft.NETCore.App": {
+      "type": "platform",
+      "version": "1.0.1"
+    },
+    // Info Support Eventbus
+    "InfoSupport.WSA.InfraStructure": "1.6.4",
+    // Shared Events and Commands
+    "InfoSupport.WSA.Auditlog.Shared": "1.0.0",
+    "Kantilever.Catalogusbeheer.Common": "1.0.0",
+    "Kantilever.Magazijnbeheer.Common": "1.0.0"
+  },
+
+  "frameworks": {
+    "netcoreapp1.0": {
+      "imports": "dnxcore50"
+    }
+  },
+
+  "scripts": {
+    "postcompile": [
+      "dotnet publish --no-build -f netcoreapp1.0 -r debian.8-x64 -c release -o \"..\\..\\..\\Deliverables\\SnapshotBuilder\""
+    ]
+  }
+}

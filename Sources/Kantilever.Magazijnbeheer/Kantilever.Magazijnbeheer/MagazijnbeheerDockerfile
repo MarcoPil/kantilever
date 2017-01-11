@@ -1,0 +1,5 @@
+FROM microsoft/dotnet:1.0.1-core
+ENTRYPOINT ["dotnet", "Kantilever.Magazijnbeheer.dll"]
+ARG source=./Magazijnbeheer
+WORKDIR /app
+COPY $source .

@@ -5,12 +5,12 @@
   },
 
   "dependencies": {
-    "InfoSupport.WSA.InfraStructure": "1.6.3",
-    "Kantilever.Magazijnbeheer.Common": "1.0.0-*",
     "Microsoft.NETCore.App": {
       "type": "platform",
       "version": "1.0.1"
-    }
+    },
+    "InfoSupport.WSA.InfraStructure": "1.7.0",
+    "Kantilever.Magazijnbeheer.Common": "1.0.0"
   },
 
   "frameworks": {

@@ -8,7 +8,6 @@ namespace Kantilever.Catalogusbeheer.Events
     {
         public ArtikelAanCatalogusToegevoegd() : base("Kantilever.Catalogusbeheer.ArtikelAanCatalogusToegevoegd")
         {
-
         }
         public int Artikelnummer { get; set; }
         public string Naam { get; set; }

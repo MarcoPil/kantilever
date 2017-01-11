@@ -1,6 +1,6 @@
 ﻿using InfoSupport.WSA.Common;
 
-namespace Kantilever.Magazijnbeheer
+namespace Kantilever.Magazijnbeheer.Events
 {
     public class ArtikelInMagazijnGezet : DomainEvent
     {

@@ -1,7 +1,9 @@
 ﻿using InfoSupport.WSA.Infrastructure;
+using Kantilever.Magazijnbeheer.Commands;
 using Kantilever.Magazijnbeheer.DAL;
 using Kantilever.Magazijnbeheer.Entities;
 using Kantilever.Magazijnbeheer.Events;
+using Kantilever.Magazijnbeheer.Shared;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -15,10 +17,6 @@ namespace Kantilever.Magazijnbeheer
         private readonly DbContextOptions<MagazijnContext> _options;
         private readonly IEventPublisher _publisher;
 
-        public MagazijnService()
-        {
-        }
-
         public MagazijnService(DbContextOptions<MagazijnContext> options, IEventPublisher publisher)
         {
             _options = options;
@@ -27,32 +25,41 @@ namespace Kantilever.Magazijnbeheer
 
         public void HaalArtikelUitMagazijn(HaalArtikelUitMagazijnCommand command)
         {
-            using (var context = new MagazijnContext(_options))
-            {
-                var artikel = context.Find<ArtikelVoorraad>(command.ArtikelID);
-
-                int voorraad = artikel?.Voorraad ?? 0;
-                if (voorraad < command.Aantal)
-                {
-                    throw new InvalidOperationException($"Er zijn {voorraad} artikelen met ID={command.ArtikelID} in het magzijn. Men kan er dan niet {command.Aantal} uithalen");
-                }
-                else
-                {
-                    artikel.Voorraad -= command.Aantal;
-                }
-                context.SaveChanges();
-                _publisher.Publish(new ArtikelUitMagazijnGehaald() { ArtikelID = artikel.ArtikelID, Voorraad = artikel.Voorraad });
-            }
-        }
-
-        public void ZetArtikelInMagazijn(ZetArtikelInMagazijnCommand command)
-        {
+            Console.WriteLine($"Execute HaalArtikelUitMagazijnCommand(id={command.ArtikelID},aantal={command.Aantal})");
             using (var context = new MagazijnContext(_options))
             {
                 var artikel = context.Find<ArtikelVoorraad>(command.ArtikelID);
                 if (artikel == null)
                 {
-                    context.Voorraad.Add(new ArtikelVoorraad() { ArtikelID = command.ArtikelID, Voorraad = command.Aantal });
+                    throw new ArtikelOnbekendException($"Artikel (met artikelnummer={command.ArtikelID}) is niet aanwezig in magazijn.");
+                }
+                else
+                {
+                    int voorraad = artikel.Voorraad;
+                    if (voorraad < command.Aantal)
+                    {
+                        throw new OnvoldoendeVoorraadException($"Er zijn {voorraad} artikelen met ID={command.ArtikelID} in het magzijn. Men kan er dan niet {command.Aantal} uithalen");
+                    }
+                    else
+                    {
+                        artikel.Voorraad -= command.Aantal;
+                    }
+                    context.SaveChanges();
+                    _publisher.Publish(new ArtikelUitMagazijnGehaald() { ArtikelID = artikel.ArtikelID, Voorraad = artikel.Voorraad });
+                }
+            }
+        }
+
+        public void ZetArtikelInMagazijn(ZetArtikelInMagazijnCommand command)
+        {
+            Console.WriteLine($"Execute ZetArtikelInMagazijnCommand(id={command.ArtikelID},aantal={command.Aantal})");
+            using (var context = new MagazijnContext(_options))
+            {
+                var artikel = context.Find<ArtikelVoorraad>(command.ArtikelID);
+                if (artikel == null)
+                {
+                    artikel = new ArtikelVoorraad() { ArtikelID = command.ArtikelID, Voorraad = command.Aantal };
+                    context.Voorraad.Add(artikel);
                 }
                 else
                 {

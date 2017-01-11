@@ -1,5 +1,5 @@
 ﻿{
-  "version": "1.0.0-*",
+  "version": "1.0.1-*",
   "buildOptions": {
     "emitEntryPoint": true
   },
@@ -9,7 +9,7 @@
       "type": "platform",
       "version": "1.0.1"
     },
-    "InfoSupport.WSA.InfraStructure": "1.6.3",
+    "InfoSupport.WSA.InfraStructure": "1.7.0",
     "Microsoft.EntityFrameworkCore": "1.1.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.0.1",
     "Microsoft.EntityFrameworkCore.Tools": {
@@ -23,7 +23,7 @@
     "Microsoft.Extensions.Configuration": "1.0.0",
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.0",
     "Microsoft.Extensions.Configuration.Json": "1.0.0",
-    "Kantilever.Magazijnbeheer.Common": "1.0.0-*"
+    "Kantilever.Magazijnbeheer.Shared": "1.0.1-*"
   },
 
   "tools": {
@@ -44,7 +44,9 @@
 
   "scripts": {
     "postcompile": [
-      "dotnet publish --no-build -f netcoreapp1.0 -r debian.8-x64 -c release -o \"..\\..\\..\\Deliverables\\Magazijnbeheer\""
+      "dotnet publish --no-build -f netcoreapp1.0 -r debian.8-x64 -c release -o \"..\\..\\..\\Deliverables\\Magazijnbeheer\"",
+      "xcopy magazijnbeheer-docker-compose.yml \"..\\..\\..\\Deliverables\" /Y",
+      "xcopy MagazijnbeheerDockerfile \"..\\..\\..\\Deliverables\" /Y"
     ]
   }
 
